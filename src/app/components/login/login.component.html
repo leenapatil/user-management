@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <h1 class="text-center login-title">Login</h1>
+      <div class="account-wall">
+        <form class="form-signin" [formGroup]="form">
+          <input
+            type="text"
+            class="form-control mb-20"
+            placeholder="Username"
+            [ngClass]="
+              form.get('username').touched &&
+              (form.get('username').errors?.required ||
+                form.get('username').errors?.incorrect)
+                ? 'error'
+                : ''
+            "
+            [formControlName]="'username'"
+          />
+          <input
+            type="password"
+            class="form-control mb-20"
+            placeholder="Password"
+            [ngClass]="
+              form.get('password').touched &&
+              (form.get('password').errors?.required ||
+                form.get('password').errors?.incorrect)
+                ? 'error'
+                : ''
+            "
+            [formControlName]="'password'"
+          />
+          <button
+            class="btn btn-lg btn-primary btn-block mb-20"
+            type="submit"
+            [disabled]="!form.valid"
+            (click)="login()"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
